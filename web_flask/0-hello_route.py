@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""Starts a Flask web application"""
+"""Starts a Flask web application with routes
+/ to display Hello HBNB"""
 
 
 from flask import Flask
