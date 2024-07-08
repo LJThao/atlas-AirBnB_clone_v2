@@ -13,15 +13,15 @@ web_app = Flask(__name__)
 
 
 @web_app.teardown_appcontext
-def teardown_appcontext(exception):
+def remove_session(exception):
     storage.close()
 
 
-@web_app.route('/cities_by_states')
+@web_app.route('/cities_by_states', strict_slashes=False)
 def cities_by_states():
     states = storage.all(State).values()
     states_sorted = sorted(states, key=lambda state: state.name)
-    return render_template('cities_by_states.html', states=states_sorted)
+    return render_template('8-cities_by_states.html', states=states_sorted)
 
 
 if __name__ == '__main__':

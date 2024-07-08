@@ -11,14 +11,14 @@ web_app = Flask(__name__)
 
 
 @web_app.teardown_appcontext
-def teardown_appcontext(exception):
+def remove_session(exception):
     storage.close()
 
 
-@web_app.route('/states_list')
+@web_app.route('/states_list', strict_slashes=False)
 def states_list():
     states = storage.all(State)
-    return render_template('states_list.html', states=states)
+    return render_template('7-states_list.html', states=states)
 
 
 if __name__ == '__main__':
