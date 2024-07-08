@@ -17,7 +17,7 @@ class State(BaseModel, Base):
         cities = relationship("City", backref="state")
     else:
         name = ""
-    cities = []
+        cities = []
 
     @property
     def cities(self):
