@@ -17,4 +17,12 @@ class State(BaseModel, Base):
         cities = relationship("City", backref="state")
     else:
         name = ""
-    cites = []
+    cities = []
+
+    @property
+    def cities(self):
+        """adding a public getter method to return the city list"""
+        if models.storage_t != "db":
+            return [city for city in models.storage.all(City)
+                    if city.state_id == self.id]
+        return []
