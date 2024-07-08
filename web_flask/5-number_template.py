@@ -3,7 +3,7 @@
 /number_template/<n> to display a HTML"""
 
 
-from flask import Flask
+from flask import Flask, render_template
 web_app = Flask(__name__)
 
 
