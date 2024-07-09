@@ -23,7 +23,7 @@ class State(BaseModel, Base):
         """adding a public getter method to return the city list"""
         city_list = []
         if models.storage_t != "db":
-            for city in models.storage.all(City).values()
+            for city in models.storage.all(City).values():
                 if city.state_id == self.id:
                     city_list.append(city)
         return city_list
