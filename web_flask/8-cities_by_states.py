@@ -19,8 +19,11 @@ def remove_session(exception):
 
 @web_app.route('/cities_by_states', strict_slashes=False)
 def cities_by_states():
+    """Route handler function that requests cities_by_states list"""
+    # Fetching all states objects
     states = storage.all(State).values()
     states_sorted = sorted(states, key=lambda state: state.name)
+    # Rendering HTML template 
     return render_template('8-cities_by_states.html', states=states_sorted)
 
 
