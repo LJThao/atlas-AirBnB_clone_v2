@@ -5,7 +5,7 @@
 from flask import Flask, render_template
 from models import storage
 from models.state import State
-
+from models import *
 
 web_app = Flask(__name__)
 
@@ -19,10 +19,8 @@ def remove_session(exception):
 @web_app.route('/states_list', strict_slashes=False)
 def states_list():
     """Route handler function that requests states_list"""
-    # Retrieving all state objects from storage and extracts
-    states = storage.all(State).values()
     # Sort all state objects
-    states_sorted = sorted(states, key=lambda state: state.name)
+    states = sorted(list(storage.all("State").values()), key=lambda x: x.name)
     # Render HTML template by passing dynamic data
     return render_template('7-states_list.html', states=states)
 
