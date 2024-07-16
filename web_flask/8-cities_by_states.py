@@ -5,8 +5,7 @@ by states list"""
 
 from flask import Flask, render_template
 from models import storage
-from models.state import State
-from models.city import City
+from models import *
 
 
 web_app = Flask(__name__)
@@ -21,10 +20,9 @@ def remove_session(exception):
 def cities_by_states():
     """Route handler function that requests cities_by_states list"""
     # Fetching all states objects
-    states = storage.all(State).values()
-    states_sorted = sorted(states, key=lambda state: state.name)
+    states = storage.all("State").values()
     # Rendering HTML template 
-    return render_template('8-cities_by_states.html', states=states_sorted)
+    return render_template('8-cities_by_states.html', states=states)
 
 
 if __name__ == '__main__':
